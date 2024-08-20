@@ -1,4 +1,4 @@
-const textArea = document.querySelector(".text-area");
+const texto = document.querySelector(".text-area");
 const mensaje = document.querySelector(".mensaje");
 const copia = document.querySelector(".copiar");
 copia.style.display = "none"
@@ -9,7 +9,7 @@ function validarTexto(){
     let validador = textoEscrito.match(/^[a-z]*$/);
 
     if(!validador || validador === 0) {
-        alert("Solo son permitidas letras minúsculas y sin acentos")
+        alert("Solo son permitidas letras minúsculas, sin acentos y sin espacios")
         location.reload();
         return true;
     }
@@ -18,21 +18,14 @@ function validarTexto(){
 
 function btnEncriptar(){
     if(!validarTexto()) {
-        const textoEncriptado = encriptar(textArea.value)
+        const textoEncriptado = encriptar(texto.value)
         mensaje.value = textoEncriptado
         mensaje.style.backgroundImage = "none"
-        textArea.value = "";
+        texto.value = "";
         copia.style.display = "block"
     
     }
 }
-
-//Laves de encriptacion
-// `La letra "e" es convertida para "enter"`
-// `La letra "i" es convertida para "imes"`
-// `La letra "a" es convertida para "ai"`
-// `La letra "o" es convertida para "ober"`
-// `La letra "u" es convertida para "ufat"`
 
 
 function encriptar(stringEncriptada){
@@ -52,9 +45,9 @@ function encriptar(stringEncriptada){
 
 
 function btnDesencriptar(){
-    const textoEncriptado = desencriptar(textArea.value)
+    const textoEncriptado = desencriptar(texto.value)
     mensaje.value = textoEncriptado
-    textArea.value = "";
+    texto.value = "";
     
 }
 
